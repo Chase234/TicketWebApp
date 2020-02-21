@@ -16,15 +16,18 @@ namespace TicketWebApp.Models
 
     public partial class UserLogin
     {
+      
         public int UserID { get; set; }
         [DisplayName("User Name")]
-        [Required(ErrorMessage ="This field is required")]
+        [Required(ErrorMessage="This field is required")]
         public string UserName { get; set; }
         [DataType(DataType.Password)]
         [Required(ErrorMessage = "This field is required")]
         public string Password { get; set; }
-        public bool Customer { get; set; }
+        public int Customer { get; set; }
 
-        public string LoginErrorMessave { get; set; }
+
+
+        public string LoginErrorMessage { get; set; }
     }
 }

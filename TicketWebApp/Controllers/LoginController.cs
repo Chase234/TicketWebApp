@@ -23,13 +23,21 @@ namespace TicketWebApp.Controllers
                 var userDetails = db.UserLogins.Where(x => x.UserName == userModel.UserName && x.Password == userModel.Password).FirstOrDefault();
                 if (userDetails == null)
                 {
-                    userModel.LoginErrorMessave = "Wrong Username or Password";
+                    userModel.LoginErrorMessage = "Wrong Username or Password";
                         return View("IndexLogin", userModel);
                 }
                 else
                 {
                     Session["UserID"] = userDetails.UserID;
-                }return RedirectToAction("Index", "Home");
+                    Session["Customer"] = userDetails.Customer;
+
+                    if (userDetails.Customer == 1)
+                    {
+                        return RedirectToAction("Index", "Home");
+
+                    }
+
+                };
             }
                
                 return View();
